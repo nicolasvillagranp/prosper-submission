@@ -1,0 +1,9 @@
+#!/bin/sh
+# Removes AI co-author trailers (e.g. "Co-Authored-By: Claude ... <noreply@anthropic.com>")
+# from every commit message. Enabled with: git config core.hooksPath .githooks
+msg_file="$1"
+tmp="$msg_file.tmp"
+grep -viE '^co-authored-by:.*(claude|anthropic)' "$msg_file" > "$tmp" || true
+# drop trailing blank lines left behind
+awk 'NF {for (i = 0; i < blank; i++) print ""; blank = 0; print; next} {blank++}' "$tmp" > "$msg_file"
+rm -f "$tmp"

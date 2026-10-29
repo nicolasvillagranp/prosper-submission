@@ -1,0 +1,31 @@
+{
+  "name": "podcast-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --experimental-websocket node_modules/vite/bin/vite.js --port 3000 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 3000",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.109.0",
+    "livekit-client": "2.23.0",
+    "livekit-server-sdk": "2.19.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "4.7.0",
+    "typescript": "5.9.3",
+    "vite": "6.4.5",
+    "vitest": "3.2.7"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}

@@ -1,0 +1,13 @@
+[project]
+name = "expert-interviews"
+version = "0.1.0"
+description = "Daily AI-expert interview topics and a live voice expert in the browser"
+requires-python = ">=3.11"
+
+# Run from the repo root (python -m agent.expert, python -m pipeline.run_daily).
+[tool.setuptools]
+packages = []
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

@@ -1,0 +1,28 @@
+# The two always-on services that run on the laptop (the web page is on Vercel).
+#
+#   docker compose up -d --build     start (and rebuild after code changes)
+#   docker compose ps                are they running?
+#   docker compose logs -f           follow the logs (Ctrl+C stops following, not the services)
+#   docker compose down              stop
+#
+# restart: unless-stopped -> they come back by themselves after a crash or a reboot
+# (with Docker Desktop set to start when you sign in).
+
+name: podcast   # its own Compose project: never mixes with other projects' containers
+
+x-app: &app
+  build: .
+  image: podcast-app
+  env_file: .env
+  restart: unless-stopped
+
+services:
+  agent:
+    <<: *app
+    command: python -m agent.expert start   # the live expert: waits for interviews from the page
+    environment:
+      LIVEKIT_AGENTS_PRELOAD_LOCAL_INFERENCE: "0"   # we don't use LiveKit's turn-detector model
+
+  worker:
+    <<: *app
+    command: python -m worker               # audio briefings on request + topics at 06:00

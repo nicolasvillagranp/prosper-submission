@@ -1,0 +1,21 @@
+# Voice agent: LiveKit Agents (rooms on LiveKit), Deepgram STT, Cartesia TTS, Silero VAD, Claude
+livekit-agents[silero,anthropic,deepgram,cartesia]==1.8.8
+livekit-api==1.2.2
+# LLM (agent + morning job)
+anthropic==1.17.0
+# Data: auth, profiles, topics, sessions, recordings
+supabase==2.33.0
+# Morning job: news search and article text
+tavily-python==0.8.5
+trafilatura==2.3.1
+feedparser==6.0.14
+httpx==0.28.1
+# Web server
+fastapi==0.162.0
+uvicorn==0.54.0
+# Shared
+pydantic==2.14.1
+python-dotenv==1.2.4
+PyYAML==6.0.3
+# Tests
+pytest==9.1.1

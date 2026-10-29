@@ -1,0 +1,86 @@
+{
+  "9d8c6b2e-0a23-4a15-ae1b-121d5b5af417": {
+    "name": "Nuria",
+    "gender": "feminine",
+    "accent": "es-ES",
+    "language": "es"
+  },
+  "538a8872-3799-4df5-b373-b78493b766c6": {
+    "name": "Blanca",
+    "gender": "feminine",
+    "accent": "es-ES",
+    "language": "es"
+  },
+  "58e531e3-b212-49df-adee-c335a19c2429": {
+    "name": "Gonzalo",
+    "gender": "masculine",
+    "accent": "es-ES",
+    "language": "es"
+  },
+  "13ff5deb-2591-42ad-a356-63a04e524411": {
+    "name": "Marcos",
+    "gender": "masculine",
+    "accent": "es-ES",
+    "language": "es"
+  },
+  "b5aa8098-49ef-475d-89b0-c9262ecf33fd": {
+    "name": "Luis",
+    "gender": "masculine",
+    "accent": "es-ES",
+    "language": "es"
+  },
+  "e5e5c8d7-3924-4ff6-981a-cb667034be29": {
+    "name": "Regina",
+    "gender": "feminine",
+    "accent": "es-MX",
+    "language": "es"
+  },
+  "3597a26f-80ef-4bd5-8101-9699bc764917": {
+    "name": "Ximena",
+    "gender": "feminine",
+    "accent": "es-MX",
+    "language": "es"
+  },
+  "2fc4f1ec-bfd0-46f1-8e6d-d4279eaaf838": {
+    "name": "Mateo",
+    "gender": "masculine",
+    "accent": "es-MX",
+    "language": "es"
+  },
+  "d46e87a1-7c6d-4b18-9359-926f4a35ffdf": {
+    "name": "Andres",
+    "gender": "masculine",
+    "accent": "es-MX",
+    "language": "es"
+  },
+  "26403c37-80c1-4a1a-8692-540551ca2ae5": {
+    "name": "Marian",
+    "gender": "feminine",
+    "accent": "en",
+    "language": "en"
+  },
+  "8d673f7e-4a22-47fd-973a-ead9a85b7187": {
+    "name": "Lindiwe",
+    "gender": "feminine",
+    "accent": "en",
+    "language": "en"
+  },
+  "24894159-1d4e-4b7c-80ca-4ae37dce9400": {
+    "name": "Tamsin",
+    "gender": "feminine",
+    "accent": "en",
+    "language": "en"
+  },
+  "5568a7df-e5ab-4442-9fae-2e9ba1b15ad8": {
+    "name": "Quentin",
+    "gender": "masculine",
+    "accent": "en",
+    "language": "en"
+  },
+  "2bc8e99c-bf1c-4977-93ff-151d7383921c": {
+    "name": "Darren",
+    "gender": "masculine",
+    "accent": "en",
+    "language": "en"
+  }
+}

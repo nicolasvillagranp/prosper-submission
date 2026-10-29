@@ -1,0 +1,333 @@
+{
+  "$defs": {
+    "LLMConfig": {
+      "properties": {
+        "model": {
+          "default": "claude-haiku-5-5",
+          "title": "Model",
+          "type": "string"
+        }
+      },
+      "title": "LLMConfig",
+      "type": "object"
+    },
+    "Persona": {
+      "description": "A fictional expert. Never a real person, never someone's voice.",
+      "properties": {
+        "name": {
+          "maxLength": 80,
+          "minLength": 2,
+          "title": "Name",
+          "type": "string"
+        },
+        "background": {
+          "maxLength": 800,
+          "minLength": 20,
+          "title": "Background",
+          "type": "string"
+        },
+        "expertise": {
+          "maxLength": 200,
+          "minLength": 3,
+          "title": "Expertise",
+          "type": "string"
+        },
+        "default_stance": {
+          "maxLength": 400,
+          "minLength": 10,
+          "title": "Default Stance",
+          "type": "string"
+        },
+        "speaking_style": {
+          "maxLength": 400,
+          "minLength": 10,
+          "title": "Speaking Style",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "background",
+        "expertise",
+        "default_stance",
+        "speaking_style"
+      ],
+      "title": "Persona",
+      "type": "object"
+    },
+    "SessionConfig": {
+      "description": "How the expert behaves and sounds in this interview.",
+      "properties": {
+        "language": {
+          "enum": [
+            "es",
+            "en"
+          ],
+          "title": "Language",
+          "type": "string"
+        },
+        "accent": {
+          "maxLength": 20,
+          "minLength": 2,
+          "title": "Accent",
+          "type": "string"
+        },
+        "audience_level": {
+          "enum": [
+            "beginner",
+            "intermediate",
+            "expert"
+          ],
+          "title": "Audience Level",
+          "type": "string"
+        },
+        "stance": {
+          "maxLength": 400,
+          "minLength": 10,
+          "title": "Stance",
+          "type": "string"
+        },
+        "answer_length": {
+          "default": "short",
+          "enum": [
+            "short",
+            "medium",
+            "long"
+          ],
+          "title": "Answer Length",
+          "type": "string"
+        },
+        "sensitivity": {
+          "default": "medium",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Sensitivity",
+          "type": "string"
+        },
+        "pronunciations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Pronunciations",
+          "type": "object"
+        },
+        "tts": {
+          "$ref": "#/$defs/TTSConfig"
+        },
+        "voice_options": {
+          "items": {
+            "$ref": "#/$defs/VoiceOption"
+          },
+          "maxItems": 3,
+          "title": "Voice Options",
+          "type": "array"
+        },
+        "llm": {
+          "$ref": "#/$defs/LLMConfig"
+        },
+        "turns": {
+          "$ref": "#/$defs/TurnsConfig"
+        }
+      },
+      "required": [
+        "language",
+        "accent",
+        "audience_level",
+        "stance",
+        "tts"
+      ],
+      "title": "SessionConfig",
+      "type": "object"
+    },
+    "Source": {
+      "properties": {
+        "n": {
+          "minimum": 1,
+          "title": "N",
+          "type": "integer"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date"
+        },
+        "publisher": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publisher"
+        }
+      },
+      "required": [
+        "n",
+        "title",
+        "url"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "TTSConfig": {
+      "properties": {
+        "voice_id": {
+          "title": "Voice Id",
+          "type": "string"
+        },
+        "speed": {
+          "default": 1.0,
+          "maximum": 1.5,
+          "minimum": 0.6,
+          "title": "Speed",
+          "type": "number"
+        },
+        "emotion": {
+          "items": {
+            "enum": [
+              "Calm",
+              "Curious",
+              "Content",
+              "Enthusiastic",
+              "Excited",
+              "Trust",
+              "Sympathetic",
+              "Anticipation"
+            ],
+            "type": "string"
+          },
+          "maxItems": 2,
+          "title": "Emotion",
+          "type": "array"
+        }
+      },
+      "required": [
+        "voice_id"
+      ],
+      "title": "TTSConfig",
+      "type": "object"
+    },
+    "TurnsConfig": {
+      "description": "Silence before the host's turn counts as finished.",
+      "properties": {
+        "min_endpointing_ms": {
+          "default": 300,
+          "maximum": 2000,
+          "minimum": 100,
+          "title": "Min Endpointing Ms",
+          "type": "integer"
+        },
+        "max_endpointing_ms": {
+          "default": 1200,
+          "maximum": 5000,
+          "minimum": 300,
+          "title": "Max Endpointing Ms",
+          "type": "integer"
+        }
+      },
+      "title": "TurnsConfig",
+      "type": "object"
+    },
+    "VoiceOption": {
+      "description": "One voice the host can pick for this expert, as scored by the writer.",
+      "properties": {
+        "voice_id": {
+          "title": "Voice Id",
+          "type": "string"
+        },
+        "score": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Score",
+          "type": "integer"
+        },
+        "why": {
+          "maxLength": 200,
+          "title": "Why",
+          "type": "string"
+        }
+      },
+      "required": [
+        "voice_id",
+        "score",
+        "why"
+      ],
+      "title": "VoiceOption",
+      "type": "object"
+    }
+  },
+  "description": "One of the user's daily topics: a ready-to-record interview.",
+  "properties": {
+    "title": {
+      "maxLength": 160,
+      "minLength": 5,
+      "title": "Title",
+      "type": "string"
+    },
+    "summary": {
+      "maxLength": 600,
+      "minLength": 20,
+      "title": "Summary",
+      "type": "string"
+    },
+    "persona": {
+      "$ref": "#/$defs/Persona"
+    },
+    "config": {
+      "$ref": "#/$defs/SessionConfig"
+    },
+    "brief": {
+      "minLength": 200,
+      "title": "Brief",
+      "type": "string"
+    },
+    "study_dialogue": {
+      "minLength": 200,
+      "title": "Study Dialogue",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "minItems": 1,
+      "title": "Sources",
+      "type": "array"
+    }
+  },
+  "required": [
+    "title",
+    "summary",
+    "persona",
+    "config",
+    "brief",
+    "study_dialogue",
+    "sources"
+  ],
+  "title": "Topic",
+  "type": "object"
+}

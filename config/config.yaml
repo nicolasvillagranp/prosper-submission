@@ -1,0 +1,30 @@
+# Product settings. Secrets (API keys) live in .env, never here.
+
+llm:
+  live_model: claude-haiku-5-5      # the expert during the interview: speed first
+  research_model: claude-sonnet-5-5 # morning job: brief, persona, study dialogue
+
+morning:
+  topics_per_day: 5
+  results_per_interest: 8  # Tavily results fetched per interest before picking topics
+
+briefing:
+  # Narrator of the audio briefing, one per language (ids from config/voices.yaml). Experts
+  # never get these voices, so the narrator always sounds like the host.
+  narrator:
+    es: b5aa8098-49ef-475d-89b0-c9262ecf33fd  # Luis, News Caster, es-ES
+    en: 26403c37-80c1-4a1a-8692-540551ca2ae5  # Marian, Poised Narrator
+  words: 420  # ~3 minutes of speech
+
+voice:
+  # Seconds of silence before the host's turn counts as finished (same values as the
+  # screening agent). Lower is snappier but cuts off hosts who pause mid-question.
+  min_delay: 0.3
+  max_delay: 1.2
+
+worker:
+  # The Docker worker: audio briefings the page asks for, and the morning job once a day.
+  morning_hour: 6           # local time below; runs at start-up too if today's run is missing
+  timezone: Europe/Madrid
+  poll_seconds: 3           # how often it checks for new briefing requests
+  new_user_check_seconds: 30  # how often it looks for users who just onboarded (first topics)
